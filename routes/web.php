@@ -15,6 +15,43 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
+Route::get('/addgroup', function () {
+    return view('addgroup');
+});
+
+
+
+ Auth::routes();
+Route::get('/ruller', 'RullerController@ruller');
+
+Route::post('/ruller/insert', 'RullerController@insert');
+Route::post('/test/check', 'OnlintestController@check');
+Route::get('/onlinetest', 'OnlintestController@test');
+
+
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/check', 'UserController@check');
+Route::get('/profile', 'UserController@profile');
+Route::get('/user/edit/{id}', 'UserController@edit');
+Route::post('/user/update/{id}', 'UserController@update');
+
+Route::get('/useradd', 'UserController@adduser');
+Route::post('/user/insert', 'UserController@insert');
+
+// Route::get('/addgroup', 'GroupController@addgroup');
+ Route::post('/group/insert', 'GroupController@insert');
+Route::get('/addruller', 'RullerController@addruller');
+
+
+Route::get('/attendance/{id}', 'TeacherController@attendance');
+
+Route::post('/profile/update', 'UserController@profile_update');
+Route::post('/parent/update', 'UserController@parent_update');
+
+
+
+

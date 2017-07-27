@@ -4,28 +4,28 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateRullerTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+       public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('ruller', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('group_id')->unsigned();
+             $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('id')->on('group')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('date')->nullable();
-            $table->text('about')->nullable();
-            $table->text('img')->nullable();
+            $table->string('date');
+            $table->text('about');
+            $table->text('img');
             $table->integer('type');
-            $table->integer('mobile')->nullable();
+            $table->integer('mobile');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -38,6 +38,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::drop('ruller');
     }
 }

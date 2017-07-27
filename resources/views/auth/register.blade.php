@@ -49,6 +49,19 @@
           </div>
         </div>
 
+
+        <div class="form-group m-t-40 form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+          <div class="col-xs-12">
+            <input id="username" type="text" class="form-control" name="username" value="" placeholder="Ləqəb" required autofocus>
+
+            @if ($errors->has('username'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('username') }}</strong>
+                </span>
+            @endif
+          </div>
+        </div>
+
         <div class="form-group form-group{{ $errors->has('email') ? ' has-error' : '' }}">
           <div class="col-xs-12">
             <input id="email" type="email" class="form-control" name="email" value="" placeholder="E-Poçt Ünvanı" required>
@@ -100,8 +113,8 @@
         <div class="form-group form-group{{ $errors->has('type') ? ' has-error' : '' }}">
           <div class="col-xs-12">
             <select class="form-group" name="type">
-              <option value="">Tələbə</option>
-              <option value="">Valideyn</option>
+              <option value="1">Tələbə</option>
+              <option value="2">Valideyn</option>
             </select>
 
             @if ($errors->has('type'))
