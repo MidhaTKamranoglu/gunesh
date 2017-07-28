@@ -20,16 +20,16 @@ class UserController extends Controller
 
 
         if (Auth::user()->type==1) {
-        $parents=new Students;
-        $parents->user_id=Auth::user()->id;
-        $parents->kart_id=rand();
-        $parents->save();
+        $students=new Students;
+        $students->user_id=Auth::user()->id;
+        $students->kart_id=rand();
+        $students->save();
         }
         if (Auth::user()->type==2) {
-        $students=new Parents;
-        $students->user_id=Auth::user()->id;
+        $parents=new Parents;
+        $parents->user_id=Auth::user()->id;
       
-        $students->save();
+        $parents->save();
         }
          return redirect()->route('home');
 
