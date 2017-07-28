@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('id')->on('group')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
-            $table->string('username')->unique();
+            $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('date')->nullable();
