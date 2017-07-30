@@ -17,16 +17,11 @@ class CreateRullerTable extends Migration
             $table->increments('id');
              $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('id')->on('group')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('date');
-            $table->text('about');
-            $table->text('img');
-            $table->integer('type');
-            $table->integer('mobile');
-            $table->rememberToken();
+            $table->string('subject');
+            $table->string('time');
+            $table->string('teacher');
+
+
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ use Hash;
 
 class UserController extends Controller
 {
-	public function check(){
+  public function check(){
 
 
 
@@ -119,6 +119,9 @@ class UserController extends Controller
       $valideyin = Parents::where('user_id',$id)->first();
 
         $student = Students::where('id',$valideyin->student_id)->first();
+        if ($student==!null) {
+         
+        
         $studentid = $student->id;
 
           $student = Students::find($studentid);
@@ -131,6 +134,11 @@ class UserController extends Controller
     
         return view('parent',compact('parent','student'));
     }
+    else{
+        return view('parent',compact('student'));
+
+    }
+  }
     if ( Auth::user()->type==1) {
   $id = Auth::user()->id;
 

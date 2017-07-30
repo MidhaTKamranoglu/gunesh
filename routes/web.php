@@ -52,6 +52,9 @@ Route::get('/addruller', 'RullerController@addruller');
 
 Route::get('/attendance/{id}', 'TeacherController@attendance');
 
+Route::post('/attendance/check/{id}', 'TeacherController@attendance_check');
+
+
 Route::post('/profile/status/{id}', 'UserController@status');
 
 

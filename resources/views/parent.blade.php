@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@if($parent->student_kart==null)
+
+@if($student==null)
  <form action="/parent/update" method="POST"  class="form-horizontal form-material">
                                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">

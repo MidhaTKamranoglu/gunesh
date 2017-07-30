@@ -11,9 +11,18 @@ class CreateAttendanceTable extends Migration
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-        //
+        Schema::create('attendance', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('group')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('status')->default('0');
+
+
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class CreateAttendanceTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('attendance');
     }
 }

@@ -20,7 +20,7 @@ class StudentsController extends Controller
         $parents = Parents::where('student_kart',$student->kart_id)->first();
 
         if ($student->kart_id==$parents->student_kart) {
-        	if ($student->acces_status==1) {
+        	if ($student->access_status==1) {
             return view ('student',compact('user'));
         		
         	}
