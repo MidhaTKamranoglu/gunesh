@@ -20,6 +20,7 @@ class CreateParentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('student_id')->unsigned()->nullable();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+             $table->integer('student_kart')->nullable();
             $table->timestamps();
         });
     }

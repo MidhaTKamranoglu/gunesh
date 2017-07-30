@@ -72,6 +72,8 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'username' => $data['username'],
             'type' => $data['type'],
+            
+
            
 
           

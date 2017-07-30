@@ -25,7 +25,10 @@
                                             <th>AD SOYAD</th>
                                             <th>Elektron Poçt</th>
                                             <th>Username</th>
+                                            <th>Status</th>
+                                            
                                             <th>Vəzifəsi</th>
+
                                             <th></th>
                                             <th></th>
 
@@ -44,8 +47,23 @@
                                             <td>{{$user->email}}</td>
                                             <td>@ {{$user->username}}</td>
                                             <td>
+                                                 <form action="/profile/status/{{$user->id}}" method="POST">
+                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                     @if($user->active==1)
+                                              <button value="0" name="active" type="submit" class="btn btn-success">Aktiv</button>
+                                              @else
+                                              <button value="1" name="active" type="submit" class="btn btn-danger">Deaktiv</button>
+                                              @endif
+
+</form>
+                                            </td>
+
+                                            <td>
                                             @if($user->type==4)
-                                            Baş Admin
+                                            Super Admin
+                                            @endif
+                                            @if($user->type==6)
+                                            Filial Rehberi
                                             @endif
 
                                             @if($user->type==3)

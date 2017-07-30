@@ -75,14 +75,27 @@
                             <input type="text" placeholder="Axtarış" class="form-control"> <a href="#"><i class="fa fa-search"></i></a> </form>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="/gunesh/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ Auth::user()->name }}</b><span class="caret"></span> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> 
+                        @if(Auth::user()->img==null )
+                        <img src="/uploads/default.png" alt="user-img" width="36" class="img-circle">
+                        @else
+                        <img src="/uploads/{{ Auth::user()->img }}" alt="user-img" width="36" class="img-circle">
+                        @endif
+                        <b class="hidden-xs">{{ Auth::user()->name }}</b><span class="caret"></span> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img src="/gunesh/images/users/varun.jpg" alt="user" /></div>
+                                    <div class="u-img">
+                        @if(Auth::user()->img==null )
+
+                                    <img src="/uploads/default.png" alt="user" />
+                                    @else
+                                    <img src="/uploads/{{ Auth::user()->img }}" alt="user" />
+                                    @endif
+                                    </div>
                                     <div class="u-text">
                                         <h4>{{ Auth::user()->name }}</h4>
-                                        <p class="text-muted">İD:{{ Auth::user()->id_kart }}</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">Profil</a></div>
+                                        <p class="text-muted">İD:{{ Auth::user()->id_kart }}</p><a href="/profile" class="btn btn-rounded btn-danger btn-sm">Profil</a></div>
                                 </div>
                             </li>
 
@@ -119,7 +132,13 @@
                     <h3><span class="fa-fw open-close"><i class="ti-menu hidden-xs"></i><i class="ti-close visible-xs"></i></span> <span class="hide-menu">Menyu</span></h3> </div>
                 <ul class="nav" id="side-menu">
                       <li class="user-pro">
-                          <a href="#" class="waves-effect"><img src="/gunesh/images/users/varun.jpg" alt="user-img" class="img-circle"> <span class="hide-menu">{{ Auth::user()->name }}<span class="fa arrow"></span></span>
+                          <a href="#" class="waves-effect">
+                           @if(Auth::user()->img==null )
+                        <img src="/uploads/default.png" alt="user-img" width="36" class="img-circle">
+                        @else
+                        <img src="/uploads/{{ Auth::user()->img }}" alt="user-img" width="36" class="img-circle">
+                        @endif
+                           <span class="hide-menu">{{ Auth::user()->name }}<span class="fa arrow"></span></span>
                           </a>
                           <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                               <li><a href="javascript:void(0)"><i class="ti-user"></i> <span class="hide-menu">My Profile</span></a></li>

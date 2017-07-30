@@ -8,9 +8,11 @@ use App\User;
 class TeacherController extends Controller
 {
    
-    public function attendance(){
-    $users = User::all();
+    public function attendance($id){
+    
+    // $users = User::all();
+    	$user = User::where('group_id',$id)->get();
 
-      return view('attendance',compact('users'));
+      return view('attendance',compact('user'));
   }
 }

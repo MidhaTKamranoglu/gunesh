@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profil Səhifəsi </h4> </div>
+                        <h4 class="page-title">Profil Səhifəsi</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
                         
                         
@@ -26,12 +26,12 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="/uploads/{{ Auth::user()->img }}">
+                            <div class="user-bg"> <img width="100%" alt="user" src="/uploads/{{ $user->img }}">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="/uploads/{{ Auth::user()->img }}" class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white">{{ Auth::user()->username }}</h4>
-                                        <h5 class="text-white">{{ Auth::user()->email }}</h5> </div>
+                                        <a href="javascript:void(0)"><img src="/uploads/{{ $user->img }}" class="thumb-lg img-circle" alt="img"></a>
+                                        <h4 class="text-white">{{ $user->username }}</h4>
+                                        <h5 class="text-white">{{ $user->email }}</h5> </div>
                                 </div>
                             </div>
                             <div class="user-btm-box">
@@ -44,12 +44,6 @@
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-danger"><i class="ti-dribbble"></i></p>
                                     <h1>556</h1> </div>
-                                     {{$user->name}} 
-                <form  action="/profile/connection" method="POST">
-                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                
-                    <button name="access_status" value="1" type="submit">Qebul et</button>
-                </form>
                             </div>
                         </div>
                     </div>
@@ -118,23 +112,23 @@
                                     <div class="row">
                                         <div class="col-md-3 col-xs-6 b-r"> <strong> Ad Soyad</strong>
                                             <br>
-                                            <p class="text-muted">{{ Auth::user()->name }}</p>
+                                            <p class="text-muted">{{ $user->name }}</p>
                                         </div>
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Mobil No</strong>
                                             <br>
-                                            <p class="text-muted">{{ Auth::user()->mobile }}</p>
+                                            <p class="text-muted">{{ $user->mobile }}</p>
                                         </div>
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
                                             <br>
-                                            <p class="text-muted">{{ Auth::user()->email }}</p>
+                                            <p class="text-muted">{{ $user->email }}</p>
                                         </div>
                                         <div class="col-md-3 col-xs-6"> <strong>Doğum Tarixi</strong>
                                             <br>
-                                            <p class="text-muted">{{ Auth::user()->date }}</p>
+                                            <p class="text-muted">{{ $user->date }}</p>
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="m-t-30">{{ Auth::user()->about }}</p>
+                                    <p class="m-t-30">{{ $user->about }}</p>
                                     
                                     <h4 class="font-bold m-t-30">İnkişaf Mərhələsi </h4>
                                     <hr>
@@ -205,12 +199,12 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Ad Soyad</label>
                                             <div class="col-md-12">
-                                                <input name="name" value="{{ Auth::user()->name }}" type="text" placeholder="" class="form-control form-control-line"> </div>
+                                                <input name="name" value="{{ $user->name }}" type="text" placeholder="" class="form-control form-control-line"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Email</label>
                                             <div class="col-md-12">
-                                                <input name="email" value="{{ Auth::user()->email }}" type="email" placeholder="" class="form-control form-control-line" name="example-email" id="example-email"> </div>
+                                                <input name="email" value="{{ $user->email }}" type="email" placeholder="" class="form-control form-control-line" name="example-email" id="example-email"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-12">Şifrə</label>
@@ -225,12 +219,12 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Mobil No</label>
                                             <div class="col-md-12">
-                                                <input name="mobile" value="{{ Auth::user()->mobile }}" type="text" placeholder="" class="form-control form-control-line"> </div>
+                                                <input name="mobile" value="{{ $user->mobile }}" type="text" placeholder="" class="form-control form-control-line"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-12">Dogum Tarix</label>
                                             <div class="col-md-12">
-                                                <input name="date" value="{{ Auth::user()->date }}" type="date" placeholder="" class="form-control form-control-line"> </div>
+                                                <input name="date" value="{{ $user->date }}" type="date" placeholder="" class="form-control form-control-line"> </div>
                                         </div>
                                          <div class="form-group">
                                             <label class="col-md-12">Foto</label>
@@ -241,7 +235,7 @@
                                             <label class="col-md-12">Haqqinda</label>
                                             <div class="col-md-12">
                                                 <textarea name="about" rows="5" class="form-control form-control-line">
-                                                    {{ Auth::user()->about }}
+                                                    {{ $user->about }}
                                                 </textarea>
                                             </div>
                                         </div>
@@ -319,6 +313,5 @@
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
-
 
 @endsection

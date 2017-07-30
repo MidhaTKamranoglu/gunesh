@@ -112,11 +112,38 @@ class UserController extends Controller
         }
 
         public function profile (){
+
     if ( Auth::user()->type==2) {
-       return view('parent');
+  $id = Auth::user()->id;
+
+      $valideyin = Parents::where('user_id',$id)->first();
+
+        $student = Students::where('id',$valideyin->student_id)->first();
+        $studentid = $student->id;
+
+          $student = Students::find($studentid);
+
+
+      $parentid = $valideyin->id;
+
+          $parent = Parents::find($parentid);
+
+    
+        return view('parent',compact('parent','student'));
     }
     if ( Auth::user()->type==1) {
-       return view('profile');
+  $id = Auth::user()->id;
+
+
+     $student = Students::where('user_id',$id)->first();
+
+        $parent = Parents::where('student_kart',$student->kart_id)->first();
+        $user = User::where('id',$parent->user_id)->first();
+        
+
+
+
+       return view('profile',compact('user'));
     }
     if (Auth::user()->type==3) {
        return view ('reseption');
@@ -129,9 +156,34 @@ class UserController extends Controller
 public function parent_update(Request $request){
    $kart = $request->kart_id;
 
-  $students = Students::all();
+      $student = Students::where('kart_id',$kart)->first();
+        $studentid = $student->id;
 
-   return view ('parent');
+ if ($student=='[]') {
+   return 'bazada telebe tapilmadi';
+ }
+ else{
+  $id = Auth::user()->id;
+
+      $valideyin = Parents::where('user_id',$id)->first();
+
+
+      $parentid = $valideyin->id;
+
+          $parent = Parents::find($parentid);
+     
+
+            $parent->student_kart=$request->kart_id;
+            $parent->student_id=$studentid;
+
+            $parent->save();
+            return back();
+  
+ }
+      
+  
+
+   // return view ('parent' ,compact('student'));
   }
 
   public function edit ($id){
@@ -206,6 +258,21 @@ public function parent_update(Request $request){
           
 
             $user->img=$newName;
+            $user->save();
+
+            return back();
+  }
+  public function status(Request $request,$id){
+
+     $user = User::find($id);
+
+      
+            $user->active=$request->active;
+
+
+          
+
+
             $user->save();
 
             return back();
