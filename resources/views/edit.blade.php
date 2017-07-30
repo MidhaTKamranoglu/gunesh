@@ -29,7 +29,7 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Şifrə</label>
                                             <div class="col-md-12">
-                                                <input name="password" type="password" class="form-control form-control-line" value="password"> </div>
+                                                <input name="password" type="password" class="form-control form-control-line"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-12">Mobile</label>
@@ -54,6 +54,17 @@
                                                     <option value="5">SMM</option>
                                                     <option value="6">Filial Rehberi</option>
                                                     <option value="0">Qonaq</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12">Qrup</label>
+                                            <div class="col-sm-12">
+                                                <select name="group_id" class="form-control form-control-line">
+
+                                                    @foreach($group as $grup )
+                                                    <option value="{{$grup->id}}" >{{$grup->number}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

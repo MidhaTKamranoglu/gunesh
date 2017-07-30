@@ -197,8 +197,10 @@ public function parent_update(Request $request){
   public function edit ($id){
   
     $user = User::find($id);
+    $group = Group::all();
+
           
-            return view ('edit',compact('user'));
+            return view ('edit',compact('user','group'));
 }
   public function update(Request $request,$id){
 
@@ -220,6 +222,8 @@ public function parent_update(Request $request){
             $user->about=$request->about;
             $user->date=$request->date;
             $user->type=$request->type;
+            $user->group_id=$request->group_id;
+            
 
 
           
